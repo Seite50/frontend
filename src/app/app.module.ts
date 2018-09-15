@@ -9,6 +9,8 @@ import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthorComponent } from './author/author.component';
+import { AuthorDetailComponent } from './author-detail/author-detail.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BooksComponent,
     MessagesComponent,
     BookDetailComponent,
-    DashboardComponent
+    DashboardComponent,
+    AuthorComponent,
+    AuthorDetailComponent
   ],
   imports: [
     BrowserModule,

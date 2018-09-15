@@ -17,8 +17,9 @@ export class BooksComponent implements OnInit {
 
   add(name: string): void {
     name = name.trim();
+
     if (!name) { return; }
-    this.bookService.addBook({ name } as Book)
+    this.bookService.addBook({name } as Book)
       .subscribe(book => {
         this.books.push(book);
       });

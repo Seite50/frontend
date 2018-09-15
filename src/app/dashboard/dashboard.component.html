@@ -4,10 +4,9 @@
   <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
 
   <ul class="search-result">
-    <li *ngFor="let book of books$ | async" >
-      <a routerLink="/detail/{{book.id}}">
-        {{book.name}}
-      </a>
+    {{results}}
+    <li *ngFor="let book of results.books | async" >
+      {{book}}
     </li>
   </ul>
 </div>

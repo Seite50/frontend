@@ -7,7 +7,8 @@ import {
  } from 'rxjs/operators';
 
 import { Book } from '../book';
-import { BookService } from '../book.service';
+import { SearchService } from '../search.service';
+import { SearchResult } from '../searchresult';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,10 +16,10 @@ import { BookService } from '../book.service';
   styleUrls: [ './dashboard.component.css' ]
 })
 export class DashboardComponent implements OnInit {
-  heroes$: Observable<Book[]>;
+  private results$: Observable<SearchResult>;
   private searchTerms = new Subject<string>();
 
-  constructor(private bookService: BookService) {}
+  constructor(private searchService: SearchService ) {}
 
   // Push a search term into the observable stream.
   search(term: string): void {
@@ -26,7 +27,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.heroes$ = this.searchTerms.pipe(
+    this.results$ = this.searchTerms.pipe(
       // wait 300ms after each keystroke before considering the term
       debounceTime(300),
 
@@ -34,7 +35,7 @@ export class DashboardComponent implements OnInit {
       distinctUntilChanged(),
 
       // switch to new search observable each time the term changes
-      switchMap((term: string) => this.bookService.searchBooks(term)),
+      switchMap((term: string) => this.searchService.search(term)),
     );
   }
 }

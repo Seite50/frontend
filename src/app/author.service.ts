@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Book } from './book';
+import { Author } from './author';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -13,10 +13,9 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class BookService {
+export class AuthorService {
 
-  // Default api url for operating with books
-  private booksUrl = '/api/books/' 
+  private authorUrl = '/api/authors/' 
 
   constructor(
     // Service for sending messages
@@ -26,44 +25,40 @@ export class BookService {
     private http: HttpClient
     ) { }
 
-  // get a list of all books
-  getBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>(this.booksUrl).pipe(
-      catchError(this.handleError('getBooks', []))
+  getAuthors(): Observable<Author[]> {
+    return this.http.get<Author[]>(this.authorUrl).pipe(
+      catchError(this.handleError('getAuthor', []))
     )
   }
 
-  // get a specific book
-  getBook(id: string): Observable<Book> {
-    const url = `${this.booksUrl}/${id}`;
-    return this.http.get<Book>(url).pipe(
-      catchError(this.handleError<Book>(`getBook id=${id}`))
+  getAuthor(id: string): Observable<Author> {
+    const url = `${this.authorUrl}/${id}`;
+    return this.http.get<Author>(url).pipe(
+      catchError(this.handleError<Author>(`getAuthor id=${id}`))
     );
   }
 
-  // update a specific book
-  updateBook (book: Book): Observable<any> {
-    const url = `${this.booksUrl}/${book.id}`;
-    return this.http.put(url, book, httpOptions).pipe(
-      catchError(this.handleError<any>('updateBook'))
+  updateAuthor (author: Author): Observable<any> {
+    const url = `${this.authorUrl}/${author.id}`;
+    return this.http.put(url, author, httpOptions).pipe(
+      catchError(this.handleError<any>('updateAuthor'))
     );
   }
 
   // add a book to the store
-  addBook (book: Book): Observable<Book> {
-    return this.http.post<Book>(this.booksUrl, book, httpOptions).pipe(
-      catchError(this.handleError<Book>('addBook'))
+  addAuthor (author: Author): Observable<Author> {
+    return this.http.post<Author>(this.authorUrl, author, httpOptions).pipe(
+      catchError(this.handleError<Author>('addAuthor'))
     );
   }
 
   // delete a book from the store
-  deleteBook (book: Book | string): Observable<Book> {
-    const id = typeof book === 'string' ? book : book.id;
-    const url = `${this.booksUrl}/${id}`;
-  
-    this.log(book.toString())
-    return this.http.delete<Book>(url, httpOptions).pipe(
-      catchError(this.handleError<Book>('deleteHero'))
+  deleteAuthor (author: Author | string): Observable<Author> {
+    const id = typeof author === 'string' ? author : author.id;
+    const url = `${this.authorUrl}/${id}`;
+
+    return this.http.delete<Author>(url, httpOptions).pipe(
+      catchError(this.handleError<Author>('deleteAuthor'))
     );
   }
 
@@ -71,7 +66,7 @@ export class BookService {
   
   // Helper
   private log(message: string) {
-    this.messageService.add(`BookService: ${message}`);
+    this.messageService.add(`AuthorService: ${message}`);
   }
 
   /**
