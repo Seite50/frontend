@@ -8,6 +8,7 @@ import { HttpClientModule }    from '@angular/common/http';
 import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BookDetailComponent } from './book-detail/book-detail.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
     AppComponent,
     BooksComponent,
     MessagesComponent,
-    BookDetailComponent
+    BookDetailComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
