@@ -29,10 +29,6 @@ export class BookDetailComponent implements OnInit {
   ngOnInit() {
     this.getBook();
     this.getAuthors();
-    this.fb.group({bookControl: this.book.authors})
-    //this.bookForm = this.fb.group({
-   //   bookControl: this.book.authors
-   // });
   }
   
   getAuthors(): void {
