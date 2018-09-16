@@ -1,23 +1,10 @@
-import { NgModule }             from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { BooksComponent } from './books/books.component'
-import { BookDetailComponent }  from './book-detail/book-detail.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { AuthorComponent } from './author/author.component';
-import { AuthorDetailComponent } from './author-detail/author-detail.component';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent},
-  { path: 'books', component: BooksComponent },
-  { path: 'books/:id', component: BookDetailComponent },
-  { path: 'authors', component: AuthorComponent },
-  { path: 'authors/:id', component: AuthorDetailComponent },
-];
+const routes: Routes = [];
 
 @NgModule({
-  exports: [ RouterModule ],
-  imports: [ RouterModule.forRoot(routes) ],
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-
-export class AppRoutingModule {}
-
+export class AppRoutingModule { }
