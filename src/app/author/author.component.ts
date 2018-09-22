@@ -15,12 +15,12 @@ export class AuthorComponent implements OnInit {
     this.authorService.getAuthors().subscribe(authors => this.authors = authors);
   }
 
-  add(givenname: string, surname: string): void {
-    givenname = givenname.trim();
-    surname = surname.trim();
+  add(lastname: string, lastname: string): void {
+    firstname = firstname.trim();
+    lastname = lastname.trim();
 
-    if (!surname && !givenname) { return; }
-    this.authorService.addAuthor({ givenname, surname } as Author)
+    if (!lastname && !firstname) { return; }
+    this.authorService.addAuthor({ firstname, lastname } as Author)
       .subscribe(author => {
         this.authors.push(author);
       });

@@ -1,14 +1,14 @@
 <div *ngIf="author">
 
-    <h2>{{author.surename | uppercase}} {{author.givenname | uppercase}} Details</h2>
+    <h2>{{author.lastname | uppercase}} {{author.firstname | uppercase}} Details</h2>
     <div>
       <label>Vorname:
-        <input [(ngModel)]="author.surname" placeholder="Vorname"/>
+        <input [(ngModel)]="author.lastname" placeholder="Vorname"/>
       </label>
       <label>Nachname:
-          <input [(ngModel)]="author.givenname" placeholder="Nachname"/>
+          <input [(ngModel)]="author.firstname" placeholder="Nachname"/>
         </label>
     </div>
-  
+
   </div>
   <button (click)="goBack()">go back</button><button (click)="save()">save</button>

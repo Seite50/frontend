@@ -3,13 +3,13 @@
 
 <div>
   <label>Vorname:
-    <input #surename />
+    <input #firstname />
     </label>
   <label>Nachnahme
-    <input #givenname>
+    <input #lastname>
   </label>
   <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(surename.value, givenname.value); surename.value=''; givenname.value=''">
+  <button (click)="add(firstname.value, lastname.value); firstname.value=''; lastname.value=''">
     add
   </button>
 </div>
@@ -17,7 +17,7 @@
 <ul class="authors">
   <li *ngFor="let author of authors">
     <a routerLink="/authors/{{author.id}}">
-      {{author.surename}} {{author.givenname}}
+      {{author.firstname}} {{author.lastname}}
     </a>
     <button class="delete" title="delete author"
       (click)="delete(author)">x</button>
