@@ -17,56 +17,22 @@ import { tap } from 'rxjs/operators';
 })
 export class BookDetailComponent implements OnInit {
 
-  book: Observable<Book>;
-  form: FormGroup;
-  //author: Author;
+  book: Book;
   authorList: Author[];
 
   constructor(  private route: ActivatedRoute,
     private bookService: BooksService,
     private authorService: AuthorsService,
-    private formBuilder: FormBuilder,
     ) { }
 
   ngOnInit() {
-    this.form = this.formBuilder.group({
-      nameControl: [null,Validators.required],
-      authorsControl: [null, Validators.required],
-    });
     let id = this.route.snapshot.paramMap.get('id');
-
-    this.book = this.bookService.getItem(id).pipe(
-      tap(book => this.form.get('nameControl').setValue(book.name))
-    );
-
-    this.authorService.getItems().subscribe(authors => this.authorList = authors);
-
-    this.form.get('authors').valueChanges.subscribe(value => { 
-      console.log(value);
-    });
-  }
-
-  getAuthors(): void {
+    this.bookService.getItem(id).subscribe(book => this.book = book);
     this.authorService.getItems().subscribe(authors => this.authorList = authors);
   }
 
-  submit(): void {
-    console.log("test");
-
-    let authorIds: string[];
-    let authorsToSave: Author[];
-    authorIds = this.form.get('authorsControl').value;
-
-    authorIds.forEach(id => {
-      this.authorService.getItem(id).subscribe(value => {
-        authorsToSave.push(value);
-      });
-    });
-    console.log(authorsToSave);
-    this.book.subscribe(value => {
-      value.name = this.form.get('nameControl').value;
-      value.authors = authorsToSave;
-      this.bookService.updateItem(value);
-    });
+  onSubmit(): void {
+    console.log("test")
+    console.log(this.book);
   }
 }

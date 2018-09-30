@@ -17,6 +17,7 @@ export class GenericrestService <T> {
 
   getItems(): Observable<T[]> {
     return this.httpClient.get<T[]>(this.restUrl).pipe(
+      tap(items => console.log("Got Items: " + JSON.stringify(items))),
       catchError(this.handleError('getItems', []))
     );
   }
@@ -24,6 +25,7 @@ export class GenericrestService <T> {
   getItem(id: string): Observable<T> {
     const realUrl = `${this.restUrl}/${id}`;
     return this.httpClient.get<T>(realUrl).pipe(
+      tap(item => console.log("Got Item: " + JSON.stringify(item))),
       catchError(this.handleError<T>(`getBook id=${id}`))
     );
   }

@@ -1,6 +1,9 @@
-<ul>
-  <li *ngFor="let book of books" class="list-group-item"><a routerLink="/books/{{book.id}}">{{book.name}} - "/books/{{book.id}}"</a></li>
-</ul>
-
-
-Hello
+<mat-list role="list">
+  <mat-list-item role="listitem" *ngFor="let book of books" class="list-group-item">
+      <h3 matLine> {{book.name}} </h3>
+      <p matLine>
+        <span> Authoren: {{book.authors}} </span>
+        <span> <a routerLink="/books/{{book.id}}">Details</a> </span>
+      </p>
+  </mat-list-item>
+</mat-list>
