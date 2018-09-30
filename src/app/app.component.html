@@ -1,5 +1,15 @@
+<button mat-button [matMenuTriggerFor]="bookMenu">Bücher</button>
+<mat-menu #bookMenu="matMenu">
+    <a mat-menu-item routerLink="/books">Anzeigen</a>
+  <button mat-menu-item>Anlegen</button>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="authorMenu">Authoren</button>
+<mat-menu #authorMenu="matMenu">
+  <a mat-menu-item routerLink="/authors">Anzeigen</a>
+</mat-menu>
 
 
-        <div class="container">
-          <router-outlet></router-outlet>
-        </div>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
