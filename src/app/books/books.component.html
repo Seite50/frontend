@@ -1,1 +1,6 @@
-<li *ngFor="let book of books">{{book.name}}</li>
+<ul>
+  <li *ngFor="let book of books" class="list-group-item"><a routerLink="/books/{{book.id}}">{{book.name}} - "/books/{{book.id}}"</a></li>
+</ul>
+
+
+Hello
