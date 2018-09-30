@@ -1,0 +1,8 @@
+<mat-list role="list">
+  <mat-list-item role="listitem" *ngFor="let author of authorsList" class="list-group-item">
+      <h3 matLine> {{author.firstname}} {{author.lastname}}</h3>
+      <p matLine>
+        <span> <a routerLink="/authors/{{author.id}}">Details</a> </span>
+      </p>
+  </mat-list-item>
+</mat-list>

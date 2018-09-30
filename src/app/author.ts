@@ -1,6 +1,10 @@
 export class Author {
+    id: string;
+    firstname: string;
+    lastname: string;
+
     constructor(
-    id: number,
+    id: string,
     firstname: string,
     lastname: string,
     ) {}

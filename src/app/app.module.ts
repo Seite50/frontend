@@ -9,15 +9,17 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule, MatSelectModule, MatInputModule, MatListModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule} from '@angular/material';
-import { RootComponent } from './root/root.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { AuthorsComponent } from './authors/authors.component';
+import { AuthorDetailComponent } from './author-detail/author-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BooksComponent,
     BookDetailComponent,
-    RootComponent
+    AuthorsComponent,
+    AuthorDetailComponent
   ],
   imports: [
     BrowserModule,
