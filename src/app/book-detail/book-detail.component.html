@@ -1,23 +1,22 @@
 
-
-<div class="container book">
-    <h1>Buch Details</h1>
-    <form #bookForm="ngForm" >
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input [(ngModel)]="book.name" type="text" class="form-control" name="bookName" id="name" required>
-      </div>
-
-      <div class="form-group">
-        <label for="author">Author</label>
-       <!-- <select class="form-control" id="author" [(ngModel)]="book.authors" multiple name="author" formControlName="authorControl" required >
-            <option style="display:none"></option>
-            <option  *ngFor="let author of authors" [value]="author">{{author.surname}}, {{author.givenname}}</option>
-          </select> -->
-      </div>
-
-      <button type="submit" class="btn btn-success" (click)="goBack()">Zurück</button>
-      <button type="submit" class="btn btn-success" (click)="save()">Speichern</button>
- 
-    </form>
+<div>
+  <form  class="form-group" (ngSubmit)="onSubmit()">
+    <mat-list role="list">
+        <mat-list-item role="listitem">
+            <mat-form-field>
+                <input matInput placeholder="Buchname" [(ngModel)]="book.name" class="form-control" name="name">
+            </mat-form-field>
+        </mat-list-item>
+        <mat-list-item role="listitem">
+          <mat-form-field>
+              <mat-select placeholder="Authoren" class="form-control" [(ngModel)]="book.authors">
+                <mat-option *ngFor="let author of authorList" [value]="author">{{author.firstname}} {{author.lastname}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </mat-list-item>
+        <mat-list-item role="listitem">
+          <button mat-raised-button type="submit">Speichern</button>
+        </mat-list-item>
+      </mat-list>
+  </form>
 </div>

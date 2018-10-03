@@ -1,12 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Book } from '../book';
 
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
-import { BookService }  from '../book.service';
-import { AuthorService } from '../author.service';
+import { BooksService } from '../books.service';
+import { AuthorsService } from '../authors.service';
 import { Author } from '../author';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+
 
 @Component({
   selector: 'app-book-detail',
@@ -15,39 +14,22 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class BookDetailComponent implements OnInit {
 
-  @Input() book: Book;
-  author: Author;
-  authors: Author[]
-  bookForm: FormGroup;
+  book: Book;
+  authorList: Author[];
 
   constructor(  private route: ActivatedRoute,
-    private bookService: BookService,
-    private authorService: AuthorService,
-    private fb: FormBuilder,
-    private location: Location) { }
+    private bookService: BooksService,
+    private authorService: AuthorsService,
+    ) { }
 
   ngOnInit() {
-    this.getBook();
-    this.getAuthors();
-  }
-  
-  getAuthors(): void {
-    this.authorService.getAuthors().subscribe(authors => this.authors = authors)
+    let id = this.route.snapshot.paramMap.get('id');
+    this.bookService.getItem(id).subscribe(book => this.book = book);
+    this.authorService.getItems().subscribe(authors => this.authorList = authors);
   }
 
-  getBook(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.bookService.getBook(id)
-      .subscribe(book => this.book = book);
-  }
-
-  goBack(): void {
-    this.location.back();
-  }
-
-  save(): void {
-    console.info(this.book)
-    this.bookService.updateBook(this.book)
-      .subscribe(() => this.goBack());
+  onSubmit(): void {
+    console.log("test")
+    console.log(this.book);
   }
 }

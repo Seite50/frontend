@@ -1,27 +1,9 @@
-<h2>Meine Bücher</h2>
-
-
-<div>
-  <label>Name des Buches:
-    <input #bookName />
-    </label>
-    <label> Authoren
-    <input #bookAuthors />
-  
-  </label>
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(bookName.value); bookName.value=''">
-    add
-  </button>
-</div>
-
-<ul class="books">
-  <li *ngFor="let book of books">
-    <a routerLink="/books/{{book.id}}">
-      <span class="badge">{{book.name}}</span> {{book.name}}
-    </a>
-    <button class="delete" title="delete book"
-      (click)="delete(book)">x</button>
-  </li>
-</ul>
-
+<mat-list role="list">
+  <mat-list-item role="listitem" *ngFor="let book of books" class="list-group-item">
+      <h3 matLine> {{book.name}} </h3>
+      <p matLine>
+        <span> Authoren: {{book.authors}} </span>
+        <span> <a routerLink="/books/{{book.id}}">Details</a> </span>
+      </p>
+  </mat-list-item>
+</mat-list>
