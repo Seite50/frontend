@@ -36,7 +36,7 @@ export class GenericrestService <T> {
     );
   }
 
-  delteItem <T extends IHasId> (item: T | string): Observable<T> {
+  deleteItem <T extends IHasId> (item: T | string): Observable<T> {
     const id = typeof item === 'string' ? item : item.id;
     const url = `${this.restUrl}/${id}`;
 
