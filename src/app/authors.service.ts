@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MessageService} from './message.service';
 import { HttpClient } from '@angular/common/http';
 import { GenericrestService } from './genericrest.service';
 import { Author } from './author';
@@ -9,7 +8,6 @@ import { Author } from './author';
 })
 export class AuthorsService extends GenericrestService<Author> {
 
-
   constructor(
       private http: HttpClient
     ) {
@@ -18,5 +16,4 @@ export class AuthorsService extends GenericrestService<Author> {
         '/api/authors'
       );
     }
-
 }
