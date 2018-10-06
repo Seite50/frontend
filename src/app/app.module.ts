@@ -12,6 +12,7 @@ import {MatFormFieldModule, MatSelectModule, MatInputModule, MatListModule, MatT
 import { LayoutModule } from '@angular/cdk/layout';
 import { AuthorsComponent } from './authors/authors.component';
 import { AuthorDetailComponent } from './author-detail/author-detail.component';
+import { AuthorComponent } from './author/author.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AuthorDetailComponent } from './author-detail/author-detail.component';
     BooksComponent,
     BookDetailComponent,
     AuthorsComponent,
-    AuthorDetailComponent
+    AuthorDetailComponent,
+    AuthorComponent
   ],
   imports: [
     BrowserModule,
